@@ -2,7 +2,7 @@ VERSION 5.00
 Begin VB.Form frmMain 
    BorderStyle     =   3  'Fixed Dialog
    Caption         =   "TSqlite²âÊÔ"
-   ClientHeight    =   7620
+   ClientHeight    =   7095
    ClientLeft      =   45
    ClientTop       =   330
    ClientWidth     =   9705
@@ -18,7 +18,7 @@ Begin VB.Form frmMain
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
-   ScaleHeight     =   7620
+   ScaleHeight     =   7095
    ScaleWidth      =   9705
    StartUpPosition =   2  'ÆÁÄ»ÖÐÐÄ
    Begin VB.CommandButton cmdExec2 
@@ -61,7 +61,7 @@ Begin VB.Form frmMain
       Width           =   9405
    End
    Begin VB.ListBox lstLog 
-      Height          =   5130
+      Height          =   4740
       Left            =   180
       TabIndex        =   0
       Top             =   1920
@@ -71,7 +71,7 @@ Begin VB.Form frmMain
       Height          =   285
       Left            =   180
       TabIndex        =   8
-      Top             =   7290
+      Top             =   6720
       Width           =   2235
    End
    Begin VB.Label lbl 
