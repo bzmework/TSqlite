@@ -21,3 +21,6 @@ Visual Studio 2019
 如果你嫌繁琐则自己手工构造工程文件。   
    
 DLL发布在：Project\tsqlite\Release   
+sqlite版本：3.30.1   
+QQ群：948127686   
+   
