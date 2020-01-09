@@ -1,12 +1,14 @@
 # TSqlite
  TSqlite是采用ATL封装的sqlite3数据库COM DLL，简单易用，如果你习惯用ADO，正好满足你所需，如下例所示：
    
+```
 Do While Not rs.EOF   
     For i = 0 To rs.ColumnCount - 1   
         Debug.Print rs.ColumnValue(rs.ColumnName(i))    
     Next   
     rs.MoveNext   
 Loop   
+```
    
 测试效果如下：   
 ![image](https://github.com/bzmework/TSqlite/blob/master/test.jpg)      
