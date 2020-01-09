@@ -1,0 +1,26 @@
+HKCR
+{
+	TSqlite.LargeInteger.1 = s 'LargeInteger Class'
+	{
+		CLSID = s '{1AF90021-031B-4734-8ADE-9E2A0A807E16}'
+	}
+	TSqlite.LargeInteger = s 'LargeInteger Class'
+	{
+		CLSID = s '{1AF90021-031B-4734-8ADE-9E2A0A807E16}'
+		CurVer = s 'TSqlite.LargeInteger.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {1AF90021-031B-4734-8ADE-9E2A0A807E16} = s 'LargeInteger Class'
+		{
+			ProgID = s 'TSqlite.LargeInteger.1'
+			VersionIndependentProgID = s 'TSqlite.LargeInteger'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{9F9CF309-9A17-425f-A640-1CA27255FB8F}'
+		}
+	}
+}

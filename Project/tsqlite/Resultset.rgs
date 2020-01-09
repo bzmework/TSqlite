@@ -1,0 +1,26 @@
+HKCR
+{
+	TSqlite.Resultset.1 = s 'Resultset Class'
+	{
+		CLSID = s '{489F9B06-E245-4124-9EC6-25C479959B15}'
+	}
+	TSqlite.Resultset = s 'Resultset Class'
+	{
+		CLSID = s '{489F9B06-E245-4124-9EC6-25C479959B15}'
+		CurVer = s 'TSqlite.Resultset.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {489F9B06-E245-4124-9EC6-25C479959B15} = s 'Resultset Class'
+		{
+			ProgID = s 'TSqlite.Resultset.1'
+			VersionIndependentProgID = s 'TSqlite.Resultset'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{9F9CF309-9A17-425f-A640-1CA27255FB8F}'
+		}
+	}
+}

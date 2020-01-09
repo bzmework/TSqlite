@@ -1,0 +1,26 @@
+HKCR
+{
+	TSqlite.Connection.1 = s 'Connection Class'
+	{
+		CLSID = s '{3B8B28CC-8ABD-49dc-AE66-B7BBABD4C0A1}'
+	}
+	TSqlite.Connection = s 'Connection Class'
+	{
+		CLSID = s '{3B8B28CC-8ABD-49dc-AE66-B7BBABD4C0A1}'
+		CurVer = s 'TSqlite.Connection.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {3B8B28CC-8ABD-49dc-AE66-B7BBABD4C0A1} = s 'Connection Class'
+		{
+			ProgID = s 'TSqlite.Connection.1'
+			VersionIndependentProgID = s 'TSqlite.Connection'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{9F9CF309-9A17-425f-A640-1CA27255FB8F}'
+		}
+	}
+}

@@ -1,0 +1,414 @@
+	/*
+		TSqlite.idl
+	*/
+	
+	import "oaidl.idl";
+	import "ocidl.idl";
+
+	[v1_enum, helpstring("数据类型")]
+	typedef enum DataTypeConstants
+	{
+		[helpstring("未知类型")]
+		dtUnknown		= -1,
+		[helpstring("空值")]
+		dtNull			= 0,
+		[helpstring("整型")]
+		dtInteger		= 1,
+		[helpstring("长整型")]
+		dtLong			= 2, // the same as lxInteger
+		[helpstring("浮点型")]
+		dtFloat			= 3,
+		[helpstring("字符型")]
+		dtString		= 4,
+		[helpstring("二进制大数据(BLOB)类型")]
+		dtBinary		= 5,
+		[helpstring("日期型")]
+		dtDate			= 6
+	} DataTypeConstants;
+
+	[v1_enum, helpstring("对象状态")]
+	typedef enum ObjectStateConstants
+	{
+		[helpstring("已关闭")]
+		osClosed		= 0,
+		[helpstring("已准备好")]
+		osPrepared		= 1,
+		[helpstring("已执行")]
+		osExecuted		= 2
+	} ObjectStateConstants;
+	
+	[v1_enum, helpstring("行类型")]
+	typedef enum RowTypeConstants
+	{
+		[helpstring("默认")]
+		rtDefault		= 0,
+		[helpstring("数组")]
+		rtArray			= 1,
+		[helpstring("集合")]
+		rtCollection	= 2
+	} RowTypeConstants;
+
+	//注意：如果要在函数中返回指定的接口，必须事先声明，否则会报：error MIDL2025 : syntax error : expecting a type specification near "IResultset"
+	interface IConnection;
+	interface IResultset;
+	interface IRows;
+	interface IRow;
+	interface IColumns;
+	interface IColumn;
+	interface IParameters;
+	interface IParameter;
+
+	//当前连接对象
+	[
+		object,
+		uuid(13C4F14F-31CA-43c2-8E58-002E4982C147),
+		helpstring("Connection Object Internal Interface"),
+		pointer_default(unique),
+		restricted,
+		local
+	]
+	interface IConnectionObject : IUnknown
+	{
+		[helpstring("Get Current Database Object")]
+		HRESULT GetCurrentDB([out, retval] void** ppDB);
+	}
+
+	[
+		object,
+		uuid(2A2B1166-04D8-4434-9460-C82A96B5A2FA),
+		dual,
+		helpstring("连接接口"),
+		nonextensible,
+		pointer_default(unique)
+	]
+	interface IConnection : IDispatch
+	{
+		[id(0), helpstring("关于")] HRESULT AboutMe();
+		[propget, id(1), helpstring("返回版本号")] HRESULT Version([out, retval] VARIANT* pVal);
+	
+		[propget, id(2), helpstring("返回/设置数据库, 例如: C:\\NorthWind.db")] HRESULT Db([out, retval] BSTR* pVal);
+		[propput, id(2), helpstring("返回/设置数据库, 例如: C:\\NorthWind.db")] HRESULT Db([in] BSTR newVal);
+		[id(3), helpstring("打开数据库, strDb: 数据库(如C:\\NorthWind.db) 或内存数据库(:memory:). 如果设置了Db属性, 则该参数可以省略.")] HRESULT Open([in, defaultvalue("")] BSTR strDb);
+		[id(4), helpstring("打开内存数据库, 当数据库关闭时, 内存数据库中的所有内容将同时被销毁. 本函数等价于: oConn.Open(\":memory:\")")] HRESULT OpenMemoryDb();
+		[id(5), helpstring("关闭数据库")] HRESULT Close();
+		
+		[id(6), helpstring("执行SQL语句, 返回结果集Resultset. \n例如: Set oRs = oConn.Execute(\"SELECT * FROM T WHERE c > 10\")")] HRESULT Execute([in] BSTR strSql, [out, retval] IResultset** ppRs);
+		[id(7), vararg, helpstring("快速执行SQL语句, 语句中可以包含参数, 如果返回多行仅取第一行记录的数据. \n例如: oConn.ExecuteSql(\"INSERT INTO T(a, b) VALUES (?, ?)\", \"money\", 88.88) \n或 nMax = oConn.ExecuteSQL(\"SELECT Max(c) FROM T\")")] HRESULT ExecuteSql([in] BSTR strSql, [in] SAFEARRAY(VARIANT)* varParams, [out, retval] VARIANT* pVal);
+		[id(8), helpstring("批量执行SQL语句, 语句中不应包含查询语句. \n例如: oConn.ExecuteSQLs(\"CREATE TABLE T(c); CREATE INDEX idx ON T(c);\")")] HRESULT ExecuteSqls([in] BSTR strSql);
+		[id(9), helpstring("中断SQL执行, 取消所有操作.")] HRESULT Cancel();
+
+		[propget, id(10), helpstring("返回最近一次更改数据库(插入、修改、删除)所影响到的记录行数")] HRESULT RowsAffected([out, retval] LONG* pVal);
+		[propget, id(11), helpstring("返回最近一次插入数据库中的记录的行ID")] HRESULT LastInsertRowID([out, retval] VARIANT* pVal);
+	
+		[propget, id(12), helpstring("返回/设置SQL语句执行进度")] HRESULT Progress([out, retval] LONG* pVal);
+		[propput, id(12), helpstring("返回/设置SQL语句执行进度")] HRESULT Progress([in] LONG nPeriod);
+
+		[id(13), helpstring("开启事务")] HRESULT BeginTrans();
+		[id(14), helpstring("提交事务")] HRESULT CommitTrans();
+		[id(15), helpstring("回滚事务")] HRESULT RollbackTrans();
+		
+	};
+
+	[
+		object,
+		uuid(3D59CD42-97D3-4e1f-B40A-AF3D4A9F6903),
+		dual,
+		helpstring("结果集接口"),
+		nonextensible,
+		pointer_default(unique)
+	]
+	interface IResultset : IDispatch
+	{
+		[propget, id(1), helpstring("返回/设置当前活动连接对象")] HRESULT ActiveConnection([out, retval] IConnection** ppConn);
+		[propput, id(1), helpstring("返回/设置当前活动连接对象")] HRESULT ActiveConnection([in] IConnection* pConn);
+		[propget, id(2), helpstring("返回/设置待执行的SQL查询语句")] HRESULT SQL([out, retval] BSTR* pVal);
+		[propput, id(2), helpstring("返回/设置待执行的SQL查询语句")] HRESULT SQL([in] BSTR newVal);
+		[id(3), helpstring("预备SQL查询语句, 在Prepare之前必须调用ActiveConnection绑定到活动连接. strSql: SQL查询语句, 如果设置了SQL属性, 则该参数可以省略.")] HRESULT Prepare([in, defaultvalue("")] BSTR strSql);
+		[id(4), helpstring("执行SQL查询语句, 在Execute之前必须调用Prepare预备好SQL")] HRESULT Execute();
+		[id(5), helpstring("重新执行SQL查询")] HRESULT Requery();
+		[id(6), helpstring("关闭结果集")] HRESULT Close();
+
+		//[propget, id(7), helpstring("当前记录位置已位于结果集的第一条记录之前")] HRESULT BOF([out, retval] VARIANT_BOOL* pVal);
+		[propget, id(8), helpstring("当前记录位置已位于结果集的最后一条记录之后")] HRESULT EOF([out, retval] VARIANT_BOOL* pVal);
+		[id(9), helpstring("移动到第一条记录")] HRESULT MoveFirst();
+		[id(10), helpstring("移动到下一条记录")] HRESULT MoveNext();
+		//[id(11), helpstring("移动到上一条记录")] HRESULT MovePrevious();
+		[id(12), helpstring("移动到最后一条记录")] HRESULT MoveLast();
+		//[id(13), helpstring("移动到指定的记录行")] HRESULT MoveSpecial([in, defaultvalue(1)] LONG lngRow);
+		[id(14), helpstring("移动指定行数")] HRESULT MoveStep([in, defaultvalue(1)] LONG nSteps, [out, retval] VARIANT_BOOL* pVal);
+
+		[propget, id(15), helpstring("返回列数")] HRESULT ColumnCount([out, retval] LONG* pVal);
+		[propget, id(16), helpstring("返回列类型")] HRESULT ColumnType([in] VARIANT varIndex, [out, retval] DataTypeConstants* pVal);
+		[propget, id(17), helpstring("返回列名")] HRESULT ColumnName([in] LONG lngIndex, [out, retval] BSTR* pVal);
+		[propget, id(18), helpstring("返回列值")] HRESULT ColumnValue([in] VARIANT varIndex, [in, defaultvalue(dtUnknown)] DataTypeConstants eType, [out, retval] VARIANT* pVal);
+		[propget, id(19), helpstring("返回列集")] HRESULT Columns([out, retval] IColumns** ppCols);
+	
+		[propget, id(20), helpstring("返回行值")] HRESULT Row([in, defaultvalue(rtDefault)] RowTypeConstants eMode, [out, retval] VARIANT* pVal);
+		[propget, id(21), helpstring("返回行数")] HRESULT RowCount([out, retval] VARIANT* pVal);
+		[propget, id(22), helpstring("返回行集")] HRESULT Rows([in, defaultvalue(0)] VARIANT_BOOL blnStatic, [in, defaultvalue(0)] LONG lngMaxRecords, [out, retval] IRows** ppRows);
+
+		[id(23), vararg, helpstring("绑定参数")] HRESULT BindParameters([in] SAFEARRAY(VARIANT)* varParams);
+		[id(24), helpstring("绑定一个参数")] HRESULT BindParameter([in] VARIANT varIndex, [in, optional] VARIANT varValue, [in, defaultvalue(dtUnknown)] DataTypeConstants eType);
+		[propget, id(25), helpstring("返回参数数量")] HRESULT ParameterCount([out, retval] LONG* pVal);
+		[propget, id(26), helpstring("返回参数名称")] HRESULT ParameterName([in] LONG lngIndex, [out, retval] BSTR* pVal);
+		[propget, id(27), helpstring("返回参数集合")] HRESULT Parameters([out, retval] IParameters** ppParams);
+
+		[propget, id(28), helpstring("返回状态")] HRESULT State([out, retval] ObjectStateConstants* pVal);
+	
+	};
+	
+	[
+		object,
+		uuid(45E835B4-DB0E-429e-9514-03AF96F61694),
+		dual,
+		nonextensible,
+		pointer_default(unique),
+		helpstring("系统繁忙事件接口: Return VARIANT_TRUE to continue or VARIANT_FALSE to abort.")
+	]
+	interface IBusy : IDispatch
+	{
+		[id(1), helpstring("系统繁忙中")] HRESULT OnBusy([in] LONG nTimes, [out, retval] VARIANT_BOOL* pVal);
+	}
+
+	[
+		object,
+		uuid(536DB7B3-9C73-4675-A38C-7DE0034D48BC),
+		dual,
+		nonextensible,
+		pointer_default(unique),
+		helpstring("执行中事件接口: Return VARIANT_TRUE to continue or VARIANT_FALSE to abort.")
+	]
+	interface IProgress : IDispatch
+	{
+		[id(2), helpstring("正在执行中")] HRESULT OnProgress([out, retval] VARIANT_BOOL* pVal);
+	}
+
+	//行
+	[
+		object,
+		uuid(6B38137B-B7E9-4ff4-84CE-838F9ACB67F6),
+		dual,
+		helpstring("行接口"),
+		nonextensible,
+		pointer_default(unique)
+	]
+	interface IRow : IDispatch
+	{
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("支持ForEach")] HRESULT _NewEnum([out, retval] IUnknown** ppEnum);
+		[propget, id(DISPID_VALUE), helpstring("返回行的指定列值. eType指定返回的类型")] HRESULT Item([in] LONG lngIndex, [in, defaultvalue(dtUnknown)] DataTypeConstants eType, [out, retval] VARIANT* pVal);
+		[propget, id(1), helpstring("返回行的列值, ForEach时自动调转到下一列并返回列值")] HRESULT Value([out, retval] VARIANT* pVal);
+		[propget, id(2), helpstring("返回行包含的列数")] HRESULT Count([out, retval] LONG* pVal);
+	};
+
+	//行集
+	[
+		object,
+		uuid(7FF1DA45-0467-4774-88A0-BB8C9FC3C074),
+		dual,
+		helpstring("行集接口"),
+		nonextensible,
+		pointer_default(unique)
+	]
+	interface IRows : IDispatch
+	{
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("支持ForEach")] HRESULT _NewEnum([out, retval] IUnknown** ppEnum);		
+		[propget, id(DISPID_VALUE), helpstring("返回行")] HRESULT Item([in, defaultvalue(-1)] LONG lngIndex, [out, retval] IRow** ppRow);
+		[propget, id(1), helpstring("返回行数")] HRESULT Count([out, retval] VARIANT* pVal);
+	};
+
+	//列
+	[
+		object,
+		uuid(8D9B58BB-2DC2-4e1b-9993-855B84FD3950),
+		dual,
+		helpstring("列接口"),
+		nonextensible,
+		pointer_default(unique)
+	]
+	interface IColumn : IDispatch
+	{
+		[propget, id(1), helpstring("返回列索引")] HRESULT Index([out, retval] LONG* pVal);
+		[propget, id(DISPID_VALUE), helpstring("返回列名称")] HRESULT Value([out, retval] BSTR* pVal);
+	};
+	
+
+	//列集
+	[
+		object,
+		uuid(97A223A1-AAA8-4ff1-BB2E-71D079399000),
+		dual,
+		helpstring("列集接口"),
+		nonextensible,
+		pointer_default(unique)
+	]
+	interface IColumns : IDispatch
+	{
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("支持ForEach")] HRESULT _NewEnum([out, retval] IUnknown** ppEnum);
+		[propget, id(DISPID_VALUE), helpstring("返回列")] HRESULT Item([in] VARIANT varIndex, [out, retval] IColumn** ppCol);
+		[propget, id(1), helpstring("返回列数")] HRESULT Count([out, retval] LONG* pVal);
+	};
+	
+	//参数
+	[
+		object,
+		uuid(A5F95A37-AD6E-466f-A923-9A5DBF964595),
+		dual,
+		helpstring("参数接口"),
+		nonextensible,
+		pointer_default(unique)
+	]
+	interface IParameter : IDispatch
+	{
+		[propget, id(1), helpstring("返回参数索引")] HRESULT Index([out, retval] LONG* pVal);
+		[propget, id(DISPID_VALUE), helpstring("返回参数名称")] HRESULT Name([out, retval] BSTR* pVal);
+		[id(2), helpstring("绑定指定参数")] HRESULT Bind([in, optional] VARIANT varValue, [in, defaultvalue(dtUnknown)] DataTypeConstants eType);
+	};
+	
+	//参数集合
+	[
+		object,
+		uuid(B98D0F82-02BA-4544-A4E9-12B0B079A5F9),
+		dual,
+		helpstring("参数集合接口"),
+		nonextensible,
+		pointer_default(unique)
+	]
+	interface IParameters : IDispatch
+	{
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("支持ForEach")] HRESULT _NewEnum([out, retval] IUnknown** ppEnum);
+		[propget, id(DISPID_VALUE), helpstring("返回参数")] HRESULT Item([in] VARIANT varIndex, [out, retval] IParameter** ppParam);
+		[propget, id(1), helpstring("返回参数数量")] HRESULT Count([out, retval] LONG* pVal);
+		[id(2), helpstring("绑定多个参数")] HRESULT Bind([in] SAFEARRAY(VARIANT)* varParams);
+	};
+	
+	//大整数
+	/*
+	[
+		object,
+		uuid(5E575221-737A-443A-9D64-13B79512D287),
+		dual,
+		helpstring("大整数对象"),
+		nonextensible,
+		pointer_default(unique)
+	]
+	interface ILargeInteger : IDispatch
+	{
+		[propget, id(1)] HRESULT LowPart([out, retval] LONG* pVal);
+		[propput, id(1)] HRESULT LowPart([in] LONG newVal);
+		[propget, id(2)] HRESULT HighPart([out, retval] LONG* pVal);
+		[propput, id(2)] HRESULT HighPart([in] LONG newVal);
+		[propget, id(DISPID_VALUE)] HRESULT QuadPart([out, retval] DECIMAL* pVal);
+		[propput, id(DISPID_VALUE)] HRESULT QuadPart([in] DECIMAL newVal);
+		[propget, id(3)] HRESULT QuadPartCy([out, retval] CY* pVal);
+		[propput, id(3)] HRESULT QuadPartCy([in] CY newVal);
+		[propget, id(4)] HRESULT MaxValue([out, retval] DECIMAL* pVal);
+		[propget, id(5)] HRESULT MinValue([out, retval] DECIMAL* pVal);
+		[propget, id(6)] HRESULT MinValueCy([out, retval] CY* pVal);
+		[propget, id(7)] HRESULT MaxValueCy([out, retval] CY* pVal);
+	};
+	*/
+
+	//库
+	[
+		uuid(9F9CF309-9A17-425f-A640-1CA27255FB8F),
+		version(1.0),
+		helpstring("eLong Sqlite Library")
+	]
+	library TSqlite
+	{
+		importlib("stdole32.tlb");
+		importlib("stdole2.tlb");
+
+		[
+			uuid(3B8B28CC-8ABD-49dc-AE66-B7BBABD4C0A1),
+			helpstring("连接")
+		]
+		coclass Connection
+		{
+			[default] interface IConnection;
+			/*[source]*/ interface IConnectionObject;
+			[source] interface IBusy;
+			[source, default] interface IProgress;		
+		};
+
+		[
+			uuid(489F9B06-E245-4124-9EC6-25C479959B15),
+			helpstring("结果集")
+		]
+		coclass Resultset
+		{
+			[default] interface IResultset;
+		};
+		
+		[
+			uuid(5C1FFF03-C6BF-43fd-9E1F-18566B6D4F12),
+			helpstring("行"),
+			noncreatable
+		]
+		coclass Row
+		{
+			[default] interface IRow;
+		};
+
+		[
+			uuid(663A9DF0-AA24-41d6-A1DC-5B0EBFE5D8F7),
+			helpstring("行集"),
+			noncreatable
+		]
+		coclass Rows
+		{
+			[default] interface IRows;
+		};
+		
+		[
+			uuid(76DA4BEA-89BB-407e-85B8-DFA4642D3834),
+			helpstring("列"),
+			noncreatable
+		]
+		coclass Column
+		{
+			[default] interface IColumn;
+		};
+
+		[
+			uuid(8A311715-C11C-4fd0-BE71-BDD9882BE1F3),
+			helpstring("列集"),
+			noncreatable
+		]
+		coclass Columns
+		{
+			[default] interface IColumns;
+		};
+		
+		[
+			uuid(9BF4CE7E-6A89-470d-8411-6330DCE54B0B),
+			helpstring("参数"),
+			noncreatable
+		]
+		coclass Parameter
+		{
+			[default] interface IParameter;
+		};
+		
+		[
+			uuid(10E7AB56-718E-458f-989F-26D73701A6A6),
+			helpstring("参数集合"),
+			noncreatable
+		]
+		coclass Parameters
+		{
+			[default] interface IParameters;
+		};
+		
+		/*
+		[
+			uuid(1AF90021-031B-4734-8ADE-9E2A0A807E16),
+			helpstring("大整型")
+		]
+		coclass LargeInteger
+		{
+			[default] interface ILargeInteger;
+		};
+		*/
+
+	};
