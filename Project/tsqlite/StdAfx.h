@@ -17,10 +17,20 @@ static const char *AUTHOR = "denglf";
 #endif // _MSC_VER > 1000
 
 #define STRICT
-#if _MSC_VER <= 1200 // MFC 6.0 or earlier
-#ifndef _WIN32_WINNT
-#define _WIN32_WINNT 0x0400
-#endif
+#if _MSC_VER <= 1200 // 1200=VC++6.0(vs98)
+	#ifndef _WIN32_WINNT
+	#define _WIN32_WINNT 0x400
+	#endif
+#else
+	#if _MSC_VER <= 1400 // 1400=VC++ 8.0(vs2005)
+		#ifndef _WIN32_WINNT
+		#define _WIN32_WINNT 0x500
+		#endif
+	#else
+		#ifndef _WIN32_WINNT
+		#define _WIN32_WINNT 0x600
+		#endif
+	#endif
 #endif
 #define _ATL_APARTMENT_THREADED
 

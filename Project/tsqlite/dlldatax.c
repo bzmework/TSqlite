@@ -4,8 +4,20 @@
 
 #define REGISTER_PROXY_DLL //DllRegisterServer, etc.
 
-#if _MSC_VER <= 1200 // MFC 6.0 or earlier
-#define _WIN32_WINNT 0x0400	//for WinNT 4.0 or Win95 with DCOM
+#if _MSC_VER <= 1200 // 1200=VC++6.0(vs98) or earlier
+	#ifndef _WIN32_WINNT
+	#define _WIN32_WINNT 0x400 //for WinNT 4.0 or Win95 with DCOM
+	#endif
+#else
+	#if _MSC_VER <= 1400 // 1400=VC++ 8.0(vs2005)
+		#ifndef _WIN32_WINNT
+		#define _WIN32_WINNT 0x500
+		#endif
+	#else
+		#ifndef _WIN32_WINNT
+		#define _WIN32_WINNT 0x600
+		#endif
+	#endif
 #endif
 
 #define USE_STUBLESS_PROXY	//defined only with MIDL switch /Oicf

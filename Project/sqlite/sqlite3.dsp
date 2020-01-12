@@ -41,7 +41,7 @@ RSC=rc.exe
 # PROP Intermediate_Dir "Release"
 # PROP Target_Dir ""
 # ADD BASE CPP /nologo /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /YX /FD /c
-# ADD CPP /nologo /G6 /MT /W3 /GX /Ot /Og /Oi /Ob2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "SQLITE_OMIT_TCL_VARIABLE" /D "THREADSAFE" /D "PIC" /FD /c
+# ADD CPP /nologo /G6 /MT /W3 /GX /Ot /Og /Oi /Ob2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "SQLITE_OMIT_TCL_VARIABLE" /D "THREADSAFE" /D "PIC" /D "INFINITY" /D "NOSUPPORTLL" /FD /c
 # SUBTRACT CPP /Ox /Os /YX
 # ADD BASE RSC /l 0x415 /d "NDEBUG"
 # ADD RSC /l 0x415 /d "NDEBUG"

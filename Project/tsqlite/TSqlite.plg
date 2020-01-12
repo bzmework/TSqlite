@@ -3,10 +3,258 @@
 <pre>
 <h1>Build Log</h1>
 <h3>
+--------------------Configuration: libunacc - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP708.tmp" with contents
+[
+/nologo /G6 /MT /W3 /Ot /Og /I "..\inc" /I "unac" /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\TSqlite\Project\libunacc\unacc.c"
+"C:\TSqlite\Project\libunacc\unac\unac.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP708.tmp" 
+Creating command line "link.exe -lib /nologo /out:"..\lib\unacc.lib"  .\Release\unacc.obj .\Release\unac.obj "
+<h3>Output Window</h3>
+Compiling...
+unacc.c
+C:\TSqlite\Project\libunacc\unacc.c(348) : warning C4244: 'initializing' : conversion from 'long ' to 'unsigned char ', possible loss of data
+unac.c
+Generating Code...
+Creating library...
+<h3>
+--------------------Configuration: sqlite3 - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP709.tmp" with contents
+[
+/nologo /G6 /MT /W3 /GX /Ot /Og /Oi /Ob2 /D "WIN32" /D "NDEBUG" /D "_MBCS" /D "_LIB" /D "SQLITE_OMIT_TCL_VARIABLE" /D "THREADSAFE" /D "PIC" /D "INFINITY" /D "NOSUPPORTLL" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\TSqlite\Project\sqlite\sqlite3.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP709.tmp" 
+Creating command line "link.exe -lib /nologo /out:"..\lib\sqlite3.lib"  .\Release\sqlite3.obj "
+<h3>Output Window</h3>
+Compiling...
+sqlite3.c
+C:\TSqlite\Project\sqlite\sqlite3.c(65536) : warning C4049: compiler limit : terminating line number emission
+C:\TSqlite\Project\sqlite\sqlite3.c(81241) : warning C4550: expression evaluates to a function which is missing an argument list
+C:\TSqlite\Project\sqlite\sqlite3.c(81250) : warning C4550: expression evaluates to a function which is missing an argument list
+C:\TSqlite\Project\sqlite\sqlite3.c(81259) : warning C4550: expression evaluates to a function which is missing an argument list
+C:\TSqlite\Project\sqlite\sqlite3.c(81263) : warning C4550: expression evaluates to a function which is missing an argument list
+C:\TSqlite\Project\sqlite\sqlite3.c(93691) : warning C4550: expression evaluates to a function which is missing an argument list
+C:\TSqlite\Project\sqlite\sqlite3.c(93693) : warning C4550: expression evaluates to a function which is missing an argument list
+C:\TSqlite\Project\sqlite\sqlite3.c(93695) : warning C4550: expression evaluates to a function which is missing an argument list
+warning C4761: integral size mismatch in argument; conversion supplied
+C:\TSqlite\Project\sqlite\sqlite3.c(-5372) : warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+C:\TSqlite\Project\sqlite\sqlite3.c(27043) : warning C4700: local variable 'c1' used without having been initialized
+C:\TSqlite\Project\sqlite\sqlite3.c(27043) : warning C4700: local variable 'c2' used without having been initialized
+C:\TSqlite\Project\sqlite\sqlite3.c(27043) : warning C4700: local variable 'm' used without having been initialized
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+warning C4761: integral size mismatch in argument; conversion supplied
+Creating library...
+<h3>
 --------------------Configuration: TSqlite - Win32 Release--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP1C3.tmp" with contents
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP70A.bat" with contents
+[
+@echo off
+mc .\Messages.mc
+]
+Creating command line "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP70A.bat"
+Creating command line "midl.exe /nologo /D _WIN32_WINNT=0x0400 /tlb ".\TSqlite.tlb" /h "TSqlite.h" /iid "TSqlite_i.c" /Oicf /no_robust /win32 /version_stamp "C:\TSqlite\Project\TSqlite\TSqlite.idl""
+Compiling .\Messages.mc
+MC: Compiling .\Messages.mc
+Creating command line "rc.exe /l 0x409 /fo"Release/TSqlite.res" /d "NDEBUG" "C:\TSqlite\Project\TSqlite\TSqlite.rc"" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP70B.tmp" with contents
+[
+/nologo /G6 /MT /W3 /Ot /Og /Oi /Ob2 /I "..\inc" /D "NDEBUG" /D "_MBCS" /D "_ATL_STATIC_REGISTRY" /D "WIN32" /D "_WINDOWS" /D "_USRDLL" /D "_MERGE_PROXYSTUB" /FR"Release/" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\TSqlite\Project\TSqlite\BlobFn.c"
+"C:\TSqlite\Project\TSqlite\Column.cpp"
+"C:\TSqlite\Project\TSqlite\Columns.cpp"
+"C:\TSqlite\Project\TSqlite\Connection.cpp"
+"C:\TSqlite\Project\TSqlite\dlldatax.c"
+"C:\TSqlite\Project\TSqlite\Glob.cpp"
+"C:\TSqlite\Project\TSqlite\Parameter.cpp"
+"C:\TSqlite\Project\TSqlite\Parameters.cpp"
+"C:\TSqlite\Project\TSqlite\Resultset.cpp"
+"C:\TSqlite\Project\TSqlite\Row.cpp"
+"C:\TSqlite\Project\TSqlite\Rows.cpp"
+"C:\TSqlite\Project\TSqlite\RowsEnum.cpp"
+"C:\TSqlite\Project\TSqlite\TSqlite.cpp"
+"C:\TSqlite\Project\TSqlite\unaccfn.c"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP70B.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP70C.tmp" with contents
+[
+/nologo /G6 /MT /W3 /Ot /Og /Oi /Ob2 /I "..\inc" /D "NDEBUG" /D "_MBCS" /D "_ATL_STATIC_REGISTRY" /D "WIN32" /D "_WINDOWS" /D "_USRDLL" /D "_MERGE_PROXYSTUB" /FR"Release/" /Fp"Release/TSqlite.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\TSqlite\Project\TSqlite\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP70C.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP70D.tmp" with contents
+[
+sqlite3.lib advapi32.lib unacc.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/TSqlite.pdb" /machine:I386 /def:".\TSqlite.def" /out:"Release/TSqlite.dll" /implib:"../libdll/sqlite3.lib" /libpath:"..\lib" 
+.\Release\BlobFn.obj
+.\Release\Column.obj
+.\Release\Columns.obj
+.\Release\Connection.obj
+.\Release\dlldatax.obj
+.\Release\Glob.obj
+.\Release\Parameter.obj
+.\Release\Parameters.obj
+.\Release\Resultset.obj
+.\Release\Row.obj
+.\Release\Rows.obj
+.\Release\RowsEnum.obj
+.\Release\StdAfx.obj
+.\Release\TSqlite.obj
+.\Release\unaccfn.obj
+.\Release\TSqlite.res
+\TSqlite\Project\lib\unacc.lib
+\TSqlite\Project\lib\sqlite3.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP70D.tmp"
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP70E.bat" with contents
+[
+@echo off
+regsvr32 /s /c ".\Release\TSqlite.dll"
+echo regsvr32 exec. time > ".\Release\regsvr32.trg"
+]
+Creating command line "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP70E.bat"
+Creating Type Library...
+Processing C:\TSqlite\Project\TSqlite\TSqlite.idl
+TSqlite.idl
+Processing C:\Program Files\Microsoft Platform SDK for Windows XP SP2\include\oaidl.idl
+oaidl.idl
+Processing C:\Program Files\Microsoft Platform SDK for Windows XP SP2\include\objidl.idl
+objidl.idl
+Processing C:\Program Files\Microsoft Platform SDK for Windows XP SP2\include\unknwn.idl
+unknwn.idl
+Processing C:\Program Files\Microsoft Platform SDK for Windows XP SP2\include\wtypes.idl
+wtypes.idl
+Processing C:\Program Files\Microsoft Platform SDK for Windows XP SP2\include\basetsd.h
+basetsd.h
+Processing C:\Program Files\Microsoft Platform SDK for Windows XP SP2\include\guiddef.h
+guiddef.h
+Processing C:\Program Files\Microsoft Platform SDK for Windows XP SP2\include\ocidl.idl
+ocidl.idl
+Processing C:\Program Files\Microsoft Platform SDK for Windows XP SP2\include\oleidl.idl
+oleidl.idl
+Processing C:\Program Files\Microsoft Platform SDK for Windows XP SP2\include\servprov.idl
+servprov.idl
+Processing C:\Program Files\Microsoft Platform SDK for Windows XP SP2\include\urlmon.idl
+urlmon.idl
+Processing C:\Program Files\Microsoft Platform SDK for Windows XP SP2\include\msxml.idl
+msxml.idl
+Processing C:\Program Files\Microsoft Platform SDK for Windows XP SP2\include\oaidl.acf
+oaidl.acf
+Processing C:\Program Files\Microsoft Platform SDK for Windows XP SP2\include\ocidl.acf
+ocidl.acf
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+BlobFn.c
+Generating Code...
+Compiling...
+Column.cpp
+Columns.cpp
+Connection.cpp
+Generating Code...
+Compiling...
+dlldatax.c
+Generating Code...
+Compiling...
+Glob.cpp
+Parameter.cpp
+Parameters.cpp
+Resultset.cpp
+Row.cpp
+Rows.cpp
+RowsEnum.cpp
+TSqlite.cpp
+Generating Code...
+Compiling...
+unaccfn.c
+Generating Code...
+Linking...
+   Creating library ../libdll/sqlite3.lib and object ../libdll/sqlite3.exp
+<h3>Output Window</h3>
+Performing registration
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP721.tmp" with contents
 [
 /nologo /o"Release/TSqlite.bsc" 
 .\Release\StdAfx.sbr
@@ -24,14 +272,14 @@ Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP1C3.tmp" with con
 .\Release\RowsEnum.sbr
 .\Release\TSqlite.sbr
 .\Release\unaccfn.sbr]
-Creating command line "bscmake.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP1C3.tmp"
+Creating command line "bscmake.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP721.tmp"
 Creating browse info file...
 <h3>Output Window</h3>
 
 
 
 <h3>Results</h3>
-TSqlite.dll - 0 error(s), 0 warning(s)
+TSqlite.dll - 0 error(s), 90 warning(s)
 </pre>
 </body>
 </html>

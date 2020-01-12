@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TSqlite", "TSqlite\TSqlite2005.vcproj", "{29BD90AC-978F-478D-9DF2-E6902859891F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1272CC64-1E2D-4BD2-80BF-90366A9E4375} = {1272CC64-1E2D-4BD2-80BF-90366A9E4375}
+		{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E} = {61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libunacc", "libunacc\libunacc2005.vcproj", "{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sqlite3", "sqlite\sqlite3-2005.vcproj", "{1272CC64-1E2D-4BD2-80BF-90366A9E4375}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug No Unacc|Win32 = Debug No Unacc|Win32
+		Debug|Win32 = Debug|Win32
+		Release No Unacc|Win32 = Release No Unacc|Win32
+		Release|Win32 = Release|Win32
+		Unicode Debug|Win32 = Unicode Debug|Win32
+		Unicode Release|Win32 = Unicode Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29BD90AC-978F-478D-9DF2-E6902859891F}.Debug No Unacc|Win32.ActiveCfg = Debug No Unacc|Win32
+		{29BD90AC-978F-478D-9DF2-E6902859891F}.Debug No Unacc|Win32.Build.0 = Debug No Unacc|Win32
+		{29BD90AC-978F-478D-9DF2-E6902859891F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{29BD90AC-978F-478D-9DF2-E6902859891F}.Debug|Win32.Build.0 = Debug|Win32
+		{29BD90AC-978F-478D-9DF2-E6902859891F}.Release No Unacc|Win32.ActiveCfg = Release No Unacc|Win32
+		{29BD90AC-978F-478D-9DF2-E6902859891F}.Release No Unacc|Win32.Build.0 = Release No Unacc|Win32
+		{29BD90AC-978F-478D-9DF2-E6902859891F}.Release|Win32.ActiveCfg = Release|Win32
+		{29BD90AC-978F-478D-9DF2-E6902859891F}.Release|Win32.Build.0 = Release|Win32
+		{29BD90AC-978F-478D-9DF2-E6902859891F}.Unicode Debug|Win32.ActiveCfg = Unicode Debug|Win32
+		{29BD90AC-978F-478D-9DF2-E6902859891F}.Unicode Debug|Win32.Build.0 = Unicode Debug|Win32
+		{29BD90AC-978F-478D-9DF2-E6902859891F}.Unicode Release|Win32.ActiveCfg = Unicode Release|Win32
+		{29BD90AC-978F-478D-9DF2-E6902859891F}.Unicode Release|Win32.Build.0 = Unicode Release|Win32
+		{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}.Debug No Unacc|Win32.ActiveCfg = Debug|Win32
+		{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}.Debug No Unacc|Win32.Build.0 = Debug|Win32
+		{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}.Debug|Win32.Build.0 = Debug|Win32
+		{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}.Release No Unacc|Win32.ActiveCfg = Release|Win32
+		{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}.Release No Unacc|Win32.Build.0 = Release|Win32
+		{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}.Release|Win32.ActiveCfg = Release|Win32
+		{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}.Release|Win32.Build.0 = Release|Win32
+		{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}.Unicode Debug|Win32.ActiveCfg = Debug|Win32
+		{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}.Unicode Debug|Win32.Build.0 = Debug|Win32
+		{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}.Unicode Release|Win32.ActiveCfg = Release|Win32
+		{61E84F5F-7BCF-41B6-82ED-4FDA7BF77B8E}.Unicode Release|Win32.Build.0 = Release|Win32
+		{1272CC64-1E2D-4BD2-80BF-90366A9E4375}.Debug No Unacc|Win32.ActiveCfg = Debug|Win32
+		{1272CC64-1E2D-4BD2-80BF-90366A9E4375}.Debug No Unacc|Win32.Build.0 = Debug|Win32
+		{1272CC64-1E2D-4BD2-80BF-90366A9E4375}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1272CC64-1E2D-4BD2-80BF-90366A9E4375}.Debug|Win32.Build.0 = Debug|Win32
+		{1272CC64-1E2D-4BD2-80BF-90366A9E4375}.Release No Unacc|Win32.ActiveCfg = Release|Win32
+		{1272CC64-1E2D-4BD2-80BF-90366A9E4375}.Release No Unacc|Win32.Build.0 = Release|Win32
+		{1272CC64-1E2D-4BD2-80BF-90366A9E4375}.Release|Win32.ActiveCfg = Release|Win32
+		{1272CC64-1E2D-4BD2-80BF-90366A9E4375}.Release|Win32.Build.0 = Release|Win32
+		{1272CC64-1E2D-4BD2-80BF-90366A9E4375}.Unicode Debug|Win32.ActiveCfg = Debug|Win32
+		{1272CC64-1E2D-4BD2-80BF-90366A9E4375}.Unicode Debug|Win32.Build.0 = Debug|Win32
+		{1272CC64-1E2D-4BD2-80BF-90366A9E4375}.Unicode Release|Win32.ActiveCfg = Release|Win32
+		{1272CC64-1E2D-4BD2-80BF-90366A9E4375}.Unicode Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

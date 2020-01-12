@@ -4,15 +4,15 @@
 
 #include "stdafx.h"
 
-#if _MSC_VER < 1300
-
 #ifdef _ATL_STATIC_REGISTRY
 #include <statreg.h>
+#if _MSC_VER <= 1200 // MFC 6.0 or earlier
 #include <statreg.cpp>
+#endif
 #endif
 
 #if _MSC_VER <= 1200 // MFC 6.0 or earlier
 #include <atlimpl.cpp>
 #endif
 
-#endif
+
